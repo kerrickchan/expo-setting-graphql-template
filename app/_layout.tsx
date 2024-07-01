@@ -1,4 +1,6 @@
+import ApolloProviderWrapper from '@/libs/graphql';
 import i18n from '@/libs/i18n';
+import store from '@/libs/store';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -6,6 +8,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import 'react-native-reanimated';
+import { Provider } from 'react-redux';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -29,13 +32,17 @@ export default function RootLayout() {
   }
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-      </ThemeProvider>
-    </I18nextProvider>
+    <Provider store={store}>
+      <ApolloProviderWrapper>
+        <I18nextProvider i18n={i18n}>
+          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </ThemeProvider>
+        </I18nextProvider>
+      </ApolloProviderWrapper>
+    </Provider>
   );
 }
