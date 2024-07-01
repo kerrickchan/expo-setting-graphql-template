@@ -17,12 +17,10 @@ export function ThemedText({
   children,
   ...rest
 }: ThemedTextProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
   const textNode = typeof children === 'string' ? t(children) : children;
 
-console.log('ThemedText.tsx: textNode:', textNode);
-console.log('i18n:', i18n.language);
   return (
     <Text
       style={[
