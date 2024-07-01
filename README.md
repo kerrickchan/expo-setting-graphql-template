@@ -1,3 +1,14 @@
+# Expo Setting GraphQL Template
+
+## SDK
+* Expo SDK v51
+* React Native v0.74.2
+* React v18.2.0
+
+## Packages
+* Redux, React-Redux, Redux-Toolkit
+* Apollo Client, GraphQL
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
@@ -7,13 +18,13 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. Install dependencies
 
    ```bash
-   npm install
+   yarn install
    ```
 
 2. Start the app
 
    ```bash
-    npx expo start
+   yarn start
    ```
 
 In the output, you'll find options to open the app in a
