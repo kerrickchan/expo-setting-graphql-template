@@ -1,4 +1,5 @@
 import { Text, type TextProps, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 
@@ -13,23 +14,26 @@ export function ThemedText({
   lightColor,
   darkColor,
   type = 'default',
+  children,
   ...rest
 }: ThemedTextProps) {
+  const { t, i18n } = useTranslation();
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+  const textNode = typeof children === 'string' ? t(children) : children;
 
+console.log('ThemedText.tsx: textNode:', textNode);
+console.log('i18n:', i18n.language);
   return (
     <Text
       style={[
         { color },
-        type === 'default' ? styles.default : undefined,
-        type === 'title' ? styles.title : undefined,
-        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-        type === 'subtitle' ? styles.subtitle : undefined,
-        type === 'link' ? styles.link : undefined,
+        styles[type],
         style,
       ]}
       {...rest}
-    />
+    >
+      {textNode}
+    </Text>
   );
 }
 

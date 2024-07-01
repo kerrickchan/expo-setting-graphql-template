@@ -8,6 +8,7 @@
 ## Packages
 * Redux, React-Redux, Redux-Toolkit
 * Apollo Client, GraphQL
+* React-i18next, i18next, @react-native-async-storage/async-storage
 
 # Welcome to your Expo app 👋
 
